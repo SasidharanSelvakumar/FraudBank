@@ -86,7 +86,7 @@ export default function Navbar() {
           <Link
             to={
               !isAuthenticated
-                ? '/login'
+                ? '/'
                 : user?.role === 'CUSTOMER'
                 ? '/dashboard'
                 : '/staff/customers'

@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Public pages
+import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -27,15 +28,6 @@ import CreateEmployeePage from './pages/admin/CreateEmployeePage';
 import BranchesPage from './pages/admin/BranchesPage';
 import AuditLogsPage from './pages/admin/AuditLogsPage';
 
-// Home redirect based on role
-function HomeRedirect() {
-  const { user, isAuthenticated, loading } = useAuth();
-  if (loading) return null;
-  if (!isAuthenticated || !user) return <Navigate to="/login" replace />;
-  if (user.role === 'CUSTOMER') return <Navigate to="/dashboard" replace />;
-  return <Navigate to="/staff/customers" replace />;
-}
-
 export default function App() {
   return (
     <BrowserRouter>
@@ -43,7 +35,7 @@ export default function App() {
         <Layout>
           <Routes>
             {/* Public Routes */}
-            <Route path="/" element={<HomeRedirect />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
 
